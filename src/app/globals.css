@@ -11,6 +11,7 @@
   --blue:#5B9FFF;
   --white:#FFFFFF; --text:#F4F2EC; --muted:#8C93A8;
   --glass:rgba(255,255,255,.045); --glass-b:rgba(255,255,255,.09);
+  --cream:#F8F5EE; --cream-text:#1A1610; --cream-muted:#6B6354;
   --r16:16px; --r20:20px; --r24:24px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -48,10 +49,10 @@ header{
   border-bottom:1px solid rgba(201,168,76,.12);
   transition:background .3s;
 }
-.nav-logo{display:flex;align-items:center;gap:.65rem;cursor:pointer;}
-.nav-logo svg{width:34px;height:34px;flex-shrink:0;}
+.nav-logo{display:flex;align-items:center;gap:.5rem;cursor:pointer;}
+.nav-logo svg{width:26px;height:26px;flex-shrink:0;}
 .logo-text{
-  font-family:'Geist','Inter',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:1px;
+  font-family:'Geist','Inter',sans-serif;font-size:.92rem;font-weight:800;letter-spacing:.5px;
   background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 55%,var(--gold) 100%);
   background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
   animation:shine 4s linear infinite;
@@ -267,6 +268,34 @@ header{
 .invest-cta{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.65rem;border-radius:10px;background:var(--green-bg);border:1px solid var(--green-line);color:var(--green);font-size:.82rem;font-weight:800;cursor:pointer;transition:background .2s;}
 .invest-cta:hover{background:rgba(0,196,106,.18);}
 
+/* TRUST & EVALUATION SECTION */
+.trust-section{border-color:rgba(201,168,76,.2);}
+.trust-intro{
+  background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:var(--r16);
+  padding:1.75rem;margin-bottom:2rem;
+}
+.trust-intro p{font-size:.88rem;color:var(--muted);line-height:1.85;margin-bottom:.9rem;}
+.trust-intro p:last-child{margin-bottom:0;}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;}
+@media(max-width:760px){.trust-grid{grid-template-columns:1fr;}}
+.trust-card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--r16);
+  padding:1.5rem;position:relative;
+}
+.trust-q-num{
+  display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;
+  background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);color:var(--gold-l);
+  font-family:'Geist','Inter',sans-serif;font-weight:800;font-size:.8rem;margin-bottom:.85rem;
+}
+.trust-card h4{font-size:.96rem;font-weight:800;margin-bottom:.6rem;}
+.trust-card p{font-size:.82rem;color:var(--muted);line-height:1.75;}
+.trust-disclaimer{
+  margin-top:1.75rem;padding:1.1rem 1.4rem;background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.06);border-left:3px solid var(--gold);border-radius:10px;
+  font-size:.78rem;color:var(--muted);line-height:1.7;
+}
+.trust-disclaimer strong{color:var(--text);}
+
 .tipper-section{position:relative;overflow:hidden;}
 .tipper-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 @media(max-width:860px){.tipper-inner{grid-template-columns:1fr;gap:2.5rem;}}
@@ -355,19 +384,119 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding
 .why-card h4{font-size:.96rem;font-weight:800;margin-bottom:.5rem;}
 .why-card p{font-size:.82rem;color:var(--muted);line-height:1.7;}
 
-/* TESTIMONIALS */
+/* TESTIMONIALS — cream spotlight cards (10-15% highlight, not full-section) */
 .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem;}
 @media(max-width:900px){.testimonial-grid{grid-template-columns:1fr;}}
-.testimonial-card{padding:1.75rem;}
-.t-stars{color:var(--gold);font-size:.85rem;margin-bottom:.85rem;letter-spacing:2px;}
-.t-text{font-size:.87rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem;font-style:italic;}
+.testimonial-card{
+  padding:1.75rem;background:var(--cream);border:1px solid rgba(0,0,0,.04);border-radius:var(--r24);
+  box-shadow:0 20px 50px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.1);
+  transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;
+}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:0 28px 64px rgba(0,0,0,.4);}
+.t-stars{color:var(--gold-d);font-size:.9rem;margin-bottom:.85rem;letter-spacing:2px;}
+.t-text{font-size:.87rem;color:var(--cream-text);line-height:1.75;margin-bottom:1.25rem;font-style:italic;font-weight:500;}
 .t-author{display:flex;align-items:center;gap:.75rem;}
 .t-avatar{
   width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,var(--gold-d),var(--gold));color:var(--navy);font-weight:800;font-size:1rem;
+  flex-shrink:0;
 }
-.t-name{font-size:.88rem;font-weight:800;}
-.t-role{font-size:.74rem;color:var(--muted);}
+.t-name{font-size:.88rem;font-weight:800;color:var(--cream-text);}
+.t-role{font-size:.74rem;color:var(--cream-muted);}
+.t-result{
+  display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:800;color:var(--green-d);
+  background:rgba(0,196,106,.1);border:1px solid rgba(0,196,106,.25);padding:.2rem .65rem;border-radius:100px;
+  margin-bottom:.85rem;
+}
+
+/* FEATURED OPPORTUNITY — cream spotlight card, stands above all other cards */
+.featured-opp{
+  background:var(--cream);border-radius:var(--r24);padding:2rem;position:relative;
+  box-shadow:0 24px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(212,175,55,.15);
+  transition:transform .3s,box-shadow .3s;
+}
+.featured-opp:hover{transform:translateY(-6px);box-shadow:0 32px 76px rgba(0,0,0,.46), 0 0 0 1px rgba(212,175,55,.3);}
+.featured-opp-badge{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.68rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gold-d);background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);
+  padding:.25rem .75rem;border-radius:100px;margin-bottom:1rem;
+}
+.featured-opp h3{color:var(--cream-text);font-size:1.15rem;font-weight:800;margin-bottom:.4rem;}
+.featured-opp-price{font-family:'Geist','Inter',sans-serif;font-size:1.3rem;font-weight:800;color:var(--gold-d);margin-bottom:1rem;}
+.featured-opp-checks{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.5rem;}
+.featured-opp-checks li{display:flex;align-items:center;gap:.55rem;font-size:.83rem;color:var(--cream-text);font-weight:500;}
+.featured-opp-checks li::before{content:'✓';color:var(--green-d);font-weight:800;}
+
+/* CREAM AUTH CARD — for login/signup, sits on dark page background */
+.cream-auth-card{
+  background:var(--cream);border-radius:var(--r24);padding:2.75rem 2.5rem;max-width:420px;width:100%;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);text-align:center;
+}
+.cream-auth-card h1{color:var(--cream-text);}
+.cream-auth-card p{color:var(--cream-muted);}
+.auth-btn-google{
+  width:100%;padding:.9rem;border-radius:100px;background:#fff;color:#1A1610;font-weight:700;font-size:.92rem;
+  border:1px solid rgba(0,0,0,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.7rem;
+  transition:box-shadow .2s,transform .2s;
+}
+.auth-btn-google:hover{box-shadow:0 8px 24px rgba(0,0,0,.12);transform:translateY(-1px);}
+
+/* LEAD MAGNET CARDS */
+.leadmagnet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.5rem;}
+@media(max-width:980px){.leadmagnet-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.leadmagnet-grid{grid-template-columns:1fr;}}
+.leadmagnet-card{
+  background:var(--cream);border-radius:var(--r24);padding:1.75rem;display:flex;flex-direction:column;
+  box-shadow:0 18px 44px rgba(0,0,0,.35);transition:transform .3s,box-shadow .3s;
+}
+.leadmagnet-card:hover{transform:translateY(-5px);box-shadow:0 26px 58px rgba(0,0,0,.42);}
+.lm-tag{
+  display:inline-block;align-self:flex-start;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:.25rem .7rem;border-radius:100px;background:rgba(201,168,76,.14);color:var(--gold-d);
+  border:1px solid rgba(201,168,76,.3);margin-bottom:1rem;
+}
+.leadmagnet-card h3{color:var(--cream-text);font-size:1.02rem;font-weight:800;margin-bottom:.55rem;line-height:1.35;}
+.leadmagnet-card p{color:var(--cream-muted);font-size:.81rem;line-height:1.65;margin-bottom:1rem;flex:1;}
+.lm-meta{font-size:.72rem;color:var(--gold-d);font-weight:700;margin-bottom:1.1rem;}
+.lm-unlock-btn{
+  width:100%;padding:.75rem;border-radius:100px;background:var(--navy);color:var(--gold-l);font-weight:700;
+  font-size:.84rem;border:1px solid rgba(201,168,76,.3);cursor:pointer;transition:background .2s,transform .2s;
+}
+.lm-unlock-btn:hover{background:#10182C;transform:translateY(-1px);}
+
+/* LEAD MAGNET MODAL */
+.lm-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,8,16,.78);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.lm-modal-overlay.active{display:flex;}
+.lm-modal-card{
+  background:var(--cream);border-radius:var(--r24);padding:2.75rem 2.5rem;max-width:440px;width:100%;
+  box-shadow:0 40px 100px rgba(0,0,0,.55);text-align:center;position:relative;
+  animation:rise .35s ease both;
+}
+.lm-modal-close{
+  position:absolute;top:1rem;right:1.1rem;background:none;border:none;font-size:1.5rem;line-height:1;
+  color:var(--cream-muted);cursor:pointer;width:32px;height:32px;
+}
+.lm-modal-badge{
+  display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:.28rem .8rem;border-radius:100px;background:rgba(201,168,76,.14);color:var(--gold-d);
+  border:1px solid rgba(201,168,76,.3);margin-bottom:1.1rem;
+}
+.lm-modal-card h3{color:var(--cream-text);font-size:1.3rem;font-weight:800;margin-bottom:.6rem;}
+.lm-modal-desc{color:var(--cream-muted);font-size:.87rem;line-height:1.65;margin-bottom:1.5rem;}
+.lm-modal-fineprint{font-size:.7rem;color:var(--cream-muted);margin-top:1rem;line-height:1.5;}
+
+/* LEGAL DOC PAGES */
+.legal-doc{max-width:760px;}
+.legal-doc h3{font-size:1.05rem;font-weight:800;color:var(--gold-l);margin:2rem 0 .75rem;}
+.legal-doc h3:first-child{margin-top:0;}
+.legal-doc p{font-size:.87rem;color:var(--muted);line-height:1.85;margin-bottom:.9rem;}
+.legal-doc ul{margin:0 0 .9rem 1.25rem;padding:0;}
+.legal-doc li{font-size:.87rem;color:var(--muted);line-height:1.85;margin-bottom:.4rem;}
+.legal-doc strong{color:var(--text);}
+
 
 /* BLOG */
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem;}
