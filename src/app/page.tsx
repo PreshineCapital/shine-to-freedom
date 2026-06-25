@@ -159,12 +159,23 @@ export default function Home() {
     setLmActiveMagnet(null)
     setLmUnlockedEmail(null)
   }
-  function signInWithGoogleForLeadMagnet() {
-    // PLACEHOLDER — replace with real Supabase OAuth in production:
-    // const supabase = createClient()
-    // await supabase.auth.signInWithOAuth({ provider: 'google',
-    //   options: { redirectTo: `${window.location.origin}/auth/callback?magnet=${lmActiveMagnet}` }})
-    setLmUnlockedEmail('you@example.com')
+  async function signInWithGoogleForLeadMagnet() {
+    const supabase = createClientComponentClient();
+    
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'select_account',
+        },
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    if (error) {
+      console.error('Google Sign-In Error:', error.message);
+    }
   }
 
   useEffect(() => {
